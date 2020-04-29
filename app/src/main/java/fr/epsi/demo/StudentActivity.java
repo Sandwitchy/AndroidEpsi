@@ -2,14 +2,13 @@ package fr.epsi.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
 
-public class ImageActivity extends DemoActivity {
+public class StudentActivity extends DemoActivity {
 
     public static final int K_I_RESULT_CODE_CLOSE=222;
 
@@ -21,19 +20,17 @@ public class ImageActivity extends DemoActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image);
-        final EditText message = findViewById(R.id.messageText);
-        Button btn = findViewById(R.id.buttonReturn);
+        setContentView(R.layout.activity_student);
+        final TextView title = findViewById(R.id.title_header);
+        title.setText("Infos");
+        Button btn = findViewById(R.id.buttonFratani);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent data = new Intent();
-                data.putExtra("msg",message.getText().toString());
-                setResult(K_I_RESULT_CODE_CLOSE,data);
-                finish();
+                //Redirection vers autre fenetre
+                Intent intent = new Intent(StudentActivity.this, NameActivity.class);
+                startActivity(intent);
             }
         });
-        String text = ((DemoApp) getApplication()).getTitle();
-        ((DemoApp) getApplication()).displayToast(text);
     }
 }

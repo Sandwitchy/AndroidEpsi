@@ -1,13 +1,11 @@
 package fr.epsi.demo;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 public class MainActivity extends DemoActivity {
 
@@ -22,10 +20,18 @@ public class MainActivity extends DemoActivity {
         Button btn = findViewById(R.id.buttonA);
         Button btn2 = findViewById(R.id.button2);
         btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Redirection vers autre fenetre
+                    Intent intent = new Intent(MainActivity.this, StudentActivity.class);
+                    startActivity(intent);
+                }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Redirection vers autre fenetre
-                Intent intent = new Intent(MainActivity.this,ImageActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListActivity.class);
                 startActivity(intent);
             }
         });
@@ -34,7 +40,7 @@ public class MainActivity extends DemoActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         switch (resultCode){
-            case ImageActivity.K_I_RESULT_CODE_CLOSE:
+            case StudentActivity.K_I_RESULT_CODE_CLOSE:
                 String msg = data.getExtras().getString("msg","");
                 demoApp.displayToast(msg);
                 break;

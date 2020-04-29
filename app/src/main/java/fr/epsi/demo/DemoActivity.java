@@ -18,7 +18,7 @@ public class DemoActivity extends AppCompatActivity {
     }
 
     public void setTitle(String string){
-        TextView title = findViewById(R.id.textViewTitle);
+        TextView title = findViewById(R.id.title_header);
         if(title != null){
             title.setText(string);
         }

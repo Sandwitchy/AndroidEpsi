@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.content.Intent;
 
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends DemoActivity {
 
     Handler handler;
     @Override
